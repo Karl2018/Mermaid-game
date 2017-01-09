@@ -1,0 +1,91 @@
+from sys import exit
+def beach():
+	print("You come across a desert island and swim to shore")
+	print("What too do?")
+	print("1. Sun yourself on the beach")
+	print("2. Crawl up beach and explore the rest of the island")
+	print("3. Sit on rock with tail in water")
+	print("4. swim back to sea.")
+	choice = input("> ")
+	
+	if choice == "1":
+		start("You tail starts to get dry quickly and you have to have to go back into the sea")
+	elif choice == "2":
+		dead("You crawl up on land but your tail quickly starts to dry out you die before you can get back in the water")
+	elif choice == "3":
+		exit("being a mermaid doesn't get any better than this")
+	elif choice == "4":
+		start()
+
+def treasure_chest():
+	print ("this chest is full of gold coins how many do you take?")
+
+	choice = input(">")
+	if "0" in choice or "1" in choice:
+		how_much = int(choice)
+	else:
+		dead("Please learn to type a number.")
+	
+	if how_much < 50:
+		print("Nice you're not greedy, you win!")
+		exit(0)
+	else:
+		print("You greedy bitch")
+
+def shark():	
+	print("There is a shark here.")
+	print("beneath the shark is a treasure chest")
+	print("how are you going to move the shark?")
+	shark_moved = False
+	
+	while True:
+		choice = input(">")
+		
+		if choice == "hit shark":
+			dead("The shark bits your arm off")
+		elif choice == "punch in nose" and not shark_moved:
+			shark_moved = True
+		elif choice == "punch in nose" and shark_moved:
+			dead("The shark gets pissed and chews your tail off.")
+		elif choice == "open chest" and shark_moved:
+			treasure_chest()
+		else:
+			print("Hint punch in nose or open chest")
+		
+def boat():
+	print("You get caught in a net")
+	print("You find yourself being pulled up to a boat")
+	print("Two fishermen look at you in disbelief and talk about making a fortune")
+	print("Do you talk to them or hit them with your tail")
+	
+	choice = input("> ")
+
+	if "hit" in choice:
+		start()
+	elif "talk" in choice:
+		dead("You end up in a fish tank")
+	else:
+		boat()
+			
+def dead():
+		print("Nooooo!")
+		exit(0)
+		
+def start():
+		print("You are a mermaid swiming in the ocean do you?")
+		print("1. Swim to shore")
+		print("2. Swim up")
+		print("3. Swim down")
+	
+		choice = input("> ")
+		
+		if choice == "1":
+			beach()
+		elif choice == "2":
+			boat()
+		elif choice == "3":
+			shark()
+		else:
+			dead("You get killed by a Shoggoth")
+				
+start()			
